@@ -27,7 +27,7 @@ class MockUserCredential extends Mock implements UserCredential {
   User? get user => _user;
 
   set user(User? value) {
-    if(_user != value) _user = value;
+    if (_user != value) _user = value;
   }
 }
 
@@ -51,31 +51,4 @@ void main() {
     );
   });
 
-  group('signIn', () {
-    test(
-      'should complete successfully when call to the server is successful',
-      () async {
-        when(
-          () => authClient.signInWithEmailAndPassword(
-            email: any(named: 'email'),
-            password: any(named: 'password'),
-          ),
-        ).thenAnswer(
-          (_) async => userCredential,
-        );
-        
-        when(() => authClient.createUserWithEmailAndPassword(email: email, password: password))
-
-        await dataSource.signUp(email: 'email', fullName: 'fullName', password:
-        'password');
-        // act
-        final result = await dataSource.signIn(
-          email: 'email',
-          password: 'password',
-        );
-
-        expect(result.email, equals('email'));
-      },
-    );
-  });
 }
