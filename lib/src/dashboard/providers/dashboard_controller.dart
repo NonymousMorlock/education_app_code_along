@@ -7,13 +7,21 @@ class DashboardController extends ChangeNotifier {
   List<int> _indexHistory = [0];
   final List<Widget> _screens = [
     ChangeNotifierProvider(
-      create: (_) => TabNavigator(
-        TabItem(
-          child: const Placeholder(),
-        ),
-      ),
+      create: (_) => TabNavigator(TabItem(child: const Placeholder())),
       child: const PersistentView(),
-    )
+    ),
+    ChangeNotifierProvider(
+      create: (_) => TabNavigator(TabItem(child: const Placeholder())),
+      child: const PersistentView(),
+    ),
+    ChangeNotifierProvider(
+      create: (_) => TabNavigator(TabItem(child: const Placeholder())),
+      child: const PersistentView(),
+    ),
+    ChangeNotifierProvider(
+      create: (_) => TabNavigator(TabItem(child: const Placeholder())),
+      child: const PersistentView(),
+    ),
   ];
 
   List<Widget> get screens => _screens;
@@ -22,14 +30,14 @@ class DashboardController extends ChangeNotifier {
   int get currentIndex => _currentIndex;
 
   void changeIndex(int index) {
-    if(_currentIndex == index) return;
+    if (_currentIndex == index) return;
     _currentIndex = index;
     _indexHistory.add(index);
     notifyListeners();
   }
 
   void goBack() {
-    if(_indexHistory.length == 1) return;
+    if (_indexHistory.length == 1) return;
     _indexHistory.removeLast();
     _currentIndex = _indexHistory.last;
     notifyListeners();
