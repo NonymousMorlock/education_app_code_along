@@ -5,10 +5,10 @@ import 'package:education_app/core/common/widgets/gradient_background.dart';
 import 'package:education_app/core/common/widgets/nested_back_button.dart';
 import 'package:education_app/core/enums/update_user.dart';
 import 'package:education_app/core/extensions/context_extension.dart';
-import 'package:education_app/core/res/colours.dart';
 import 'package:education_app/core/res/media_res.dart';
 import 'package:education_app/core/utils/core_utils.dart';
 import 'package:education_app/src/auth/presentation/bloc/auth_bloc.dart';
+import 'package:education_app/src/profile/presentation/widgets/edit_profile_form.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
@@ -137,6 +137,14 @@ class _EditProfileViewState extends State<EditProfileView> {
                       ),
                     );
                   }
+                  if (bioChanged) {
+                    bloc.add(
+                      UpdateUserEvent(
+                        action: UpdateUserAction.bio,
+                        userData: bioController.text.trim(),
+                      ),
+                    );
+                  }
                   if (imageChanged) {
                     bloc.add(
                       UpdateUserEvent(
@@ -227,6 +235,13 @@ class _EditProfileViewState extends State<EditProfileView> {
                   ),
                 ),
                 const SizedBox(height: 30),
+                EditProfileForm(
+                  fullNameController: fullNameController,
+                  emailController: emailController,
+                  passwordController: passwordController,
+                  oldPasswordController: oldPasswordController,
+                  bioController: bioController,
+                ),
               ],
             ),
           ),
