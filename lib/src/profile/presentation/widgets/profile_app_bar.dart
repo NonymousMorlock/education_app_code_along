@@ -1,6 +1,5 @@
 import 'dart:async';
 
-import 'package:education_app/core/common/app/providers/tab_navigator.dart';
 import 'package:education_app/core/common/widgets/popup_item.dart';
 import 'package:education_app/core/extensions/context_extension.dart';
 import 'package:education_app/core/res/colours.dart';
