@@ -1,6 +1,6 @@
 
 import 'package:education_app/core/common/features/course/domain/entities/course.dart';
-import 'package:education_app/core/utils/typdefs.dart';
+import 'package:education_app/core/utils/typedefs.dart';
 
 abstract class CourseRepo {
   const CourseRepo();

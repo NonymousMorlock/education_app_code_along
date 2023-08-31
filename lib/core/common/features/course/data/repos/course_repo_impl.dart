@@ -4,7 +4,7 @@ import 'package:education_app/core/common/features/course/domain/entities/course
 import 'package:education_app/core/common/features/course/domain/repos/course_repo.dart';
 import 'package:education_app/core/errors/exceptions.dart';
 import 'package:education_app/core/errors/failures.dart';
-import 'package:education_app/core/utils/typdefs.dart';
+import 'package:education_app/core/utils/typedefs.dart';
 
 class CourseRepoImpl implements CourseRepo {
   const CourseRepoImpl(this._remoteDataSrc);
