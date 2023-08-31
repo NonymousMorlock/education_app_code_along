@@ -1,5 +1,5 @@
-import 'package:education_app/core/common/features/course/data/datasources/course_remote_data_src.dart';
-import 'package:education_app/core/common/features/course/data/models/course_model.dart';
+import 'package:education_app/src/course/data/datasources/course_remote_data_src.dart';
+import 'package:education_app/src/course/data/models/course_model.dart';
 import 'package:fake_cloud_firestore/fake_cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_auth_mocks/firebase_auth_mocks.dart';
