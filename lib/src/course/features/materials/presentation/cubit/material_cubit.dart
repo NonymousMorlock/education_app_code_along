@@ -30,7 +30,7 @@ class MaterialCubit extends Cubit<MaterialState> {
         (_) => null,
       );
     }
-    emit(const MaterialsAdded());
+    if(state is! MaterialError) emit(const MaterialsAdded());
   }
 
   Future<void> getMaterials(String courseId) async {
