@@ -217,7 +217,8 @@ void main() {
   // group('getNotifications', () {
   //   final tNotification = NotificationModel.empty();
   //   test(
-  //     'should return [Stream<Either<NotificationError, List<Notification>>>] '
+  //     'should return [Stream<Either<NotificationError,
+  //     List<Notification>>>] '
   //         'when successful',
   //         () async {
   //       when(() => getNotifications())
@@ -236,7 +237,8 @@ void main() {
   //   );
   //
   //   test(
-  //     'should return [Stream<Either<NotificationError, List<Notification>>>] '
+  //     'should return [Stream<Either<NotificationError,
+  //     List<Notification>>>] '
   //         'when unsuccessful',
   //         () async {
   //       when(() => getNotifications()).thenAnswer(
@@ -283,10 +285,10 @@ void main() {
     );
     blocTest<NotificationCubit, NotificationState>(
       'should emit '
-          '[GettingNotifications, NotificationError] when successful',
+      '[GettingNotifications, NotificationError] when successful',
       build: () {
         when(() => getNotifications()).thenAnswer(
-              (_) => Stream.value(Left(tFailure)),
+          (_) => Stream.value(Left(tFailure)),
         );
         return cubit;
       },
