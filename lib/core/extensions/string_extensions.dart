@@ -1,4 +1,3 @@
-
 extension StringExt on String {
   String get obscureEmail {
     // split the email into username and domain
@@ -10,4 +9,7 @@ extension StringExt on String {
     username = '${username[0]}****${username[username.length - 1]}';
     return '$username@$domain';
   }
+
+  bool get isYoutubeVideo =>
+      contains('youtube.com/watch?v=') || contains('youtu.be/');
 }
