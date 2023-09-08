@@ -6,6 +6,8 @@ import 'package:education_app/src/course/presentation/cubit/course_cubit.dart';
 import 'package:education_app/src/home/presentation/views/home_view.dart';
 import 'package:education_app/src/notifications/presentation/cubit/notification_cubit.dart';
 import 'package:education_app/src/profile/presentation/views/profile_view.dart';
+import 'package:education_app/src/quick_access/presentation/providers/quick_access_tab_controller.dart';
+import 'package:education_app/src/quick_access/presentation/views/quick_access_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
@@ -14,22 +16,34 @@ class DashboardController extends ChangeNotifier {
   List<int> _indexHistory = [0];
   final List<Widget> _screens = [
     ChangeNotifierProvider(
-      create: (_) => TabNavigator(
-        TabItem(
-          child: MultiBlocProvider(
-            providers: [
-              BlocProvider(create: (_) => sl<CourseCubit>()),
-              BlocProvider(create: (_) => sl<VideoCubit>()),
-              BlocProvider.value(value: sl<NotificationCubit>()),
-            ],
-            child: const HomeView(),
+      create: (_) =>
+          TabNavigator(
+            TabItem(
+              child: MultiBlocProvider(
+                providers: [
+                  BlocProvider(create: (_) => sl<CourseCubit>()),
+                  BlocProvider(create: (_) => sl<VideoCubit>()),
+                  BlocProvider.value(value: sl<NotificationCubit>()),
+                ],
+                child: const HomeView(),
+              ),
+            ),
           ),
-        ),
-      ),
       child: const PersistentView(),
     ),
     ChangeNotifierProvider(
-      create: (_) => TabNavigator(TabItem(child: const Placeholder())),
+      create: (_) =>
+          TabNavigator(
+            TabItem(
+              child: BlocProvider(
+                create: (context) => sl<CourseCubit>(),
+                child: ChangeNotifierProvider(
+                  create: (_) => QuickAccessTabController(),
+                  child: const QuickAccessView(),
+                ),
+              ),
+            ),
+          ),
       child: const PersistentView(),
     ),
     ChangeNotifierProvider(
