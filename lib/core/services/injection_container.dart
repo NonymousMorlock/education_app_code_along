@@ -29,6 +29,7 @@ import 'package:education_app/src/course/features/materials/domain/repos/materia
 import 'package:education_app/src/course/features/materials/domain/usecases/add_material.dart';
 import 'package:education_app/src/course/features/materials/domain/usecases/get_materials.dart';
 import 'package:education_app/src/course/features/materials/presentation/app/cubit/material_cubit.dart';
+import 'package:education_app/src/course/features/materials/presentation/app/providers/resource_controller.dart';
 import 'package:education_app/src/course/features/videos/data/datasources/video_remote_data_src.dart';
 import 'package:education_app/src/course/features/videos/data/repos/video_repo_impl.dart';
 import 'package:education_app/src/course/features/videos/domain/repos/video_repo.dart';

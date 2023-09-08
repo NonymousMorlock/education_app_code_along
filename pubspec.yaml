@@ -22,6 +22,9 @@ dependencies:
     git:
       url: https://github.com/NonymousMorlock/flutter_tindercard.git
   equatable: ^2.0.5
+  file_icon:
+    git:
+      url: https://github.com/NonymousMorlock/file_icon
   file_picker: ^5.3.3
   font_awesome_flutter: ^10.5.0
   get_it: ^7.6.0
