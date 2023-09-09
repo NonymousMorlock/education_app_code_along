@@ -16,3 +16,8 @@ abstract class StreamUsecaseWithoutParams<Type> {
 
   ResultStream<Type> call();
 }
+abstract class StreamUsecaseWithParams<Type, Params> {
+  const StreamUsecaseWithParams();
+
+  ResultStream<Type> call(Params params);
+}
