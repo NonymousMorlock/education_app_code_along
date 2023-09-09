@@ -1,6 +1,8 @@
 import 'package:education_app/core/common/app/providers/tab_navigator.dart';
 import 'package:education_app/core/common/views/persistent_view.dart';
 import 'package:education_app/core/services/injection_container.dart';
+import 'package:education_app/src/chat/presentation/cubit/chat_cubit.dart';
+import 'package:education_app/src/chat/presentation/views/groups_view.dart';
 import 'package:education_app/src/course/features/videos/presentation/cubit/video_cubit.dart';
 import 'package:education_app/src/course/presentation/cubit/course_cubit.dart';
 import 'package:education_app/src/home/presentation/views/home_view.dart';
@@ -16,38 +18,43 @@ class DashboardController extends ChangeNotifier {
   List<int> _indexHistory = [0];
   final List<Widget> _screens = [
     ChangeNotifierProvider(
-      create: (_) =>
-          TabNavigator(
-            TabItem(
-              child: MultiBlocProvider(
-                providers: [
-                  BlocProvider(create: (_) => sl<CourseCubit>()),
-                  BlocProvider(create: (_) => sl<VideoCubit>()),
-                  BlocProvider.value(value: sl<NotificationCubit>()),
-                ],
-                child: const HomeView(),
-              ),
-            ),
+      create: (_) => TabNavigator(
+        TabItem(
+          child: MultiBlocProvider(
+            providers: [
+              BlocProvider(create: (_) => sl<CourseCubit>()),
+              BlocProvider(create: (_) => sl<VideoCubit>()),
+              BlocProvider.value(value: sl<NotificationCubit>()),
+            ],
+            child: const HomeView(),
           ),
+        ),
+      ),
       child: const PersistentView(),
     ),
     ChangeNotifierProvider(
-      create: (_) =>
-          TabNavigator(
-            TabItem(
-              child: BlocProvider(
-                create: (context) => sl<CourseCubit>(),
-                child: ChangeNotifierProvider(
-                  create: (_) => QuickAccessTabController(),
-                  child: const QuickAccessView(),
-                ),
-              ),
+      create: (_) => TabNavigator(
+        TabItem(
+          child: BlocProvider(
+            create: (context) => sl<CourseCubit>(),
+            child: ChangeNotifierProvider(
+              create: (_) => QuickAccessTabController(),
+              child: const QuickAccessView(),
             ),
           ),
+        ),
+      ),
       child: const PersistentView(),
     ),
     ChangeNotifierProvider(
-      create: (_) => TabNavigator(TabItem(child: const Placeholder())),
+      create: (_) => TabNavigator(
+        TabItem(
+          child: BlocProvider(
+            create: (_) => sl<ChatCubit>(),
+            child: const GroupsView(),
+          ),
+        ),
+      ),
       child: const PersistentView(),
     ),
     ChangeNotifierProvider(
